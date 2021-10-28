@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <title>Message board</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='mb_css.css')}}"/>
+    {% endblock %}
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <h1>Message board</h1>
+        </div>
+        {% block nav %}
+        {% endblock %}
+        <div id="section">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <div id="footer">
+             2020 -<strong>Message Board website</strong>
+        </div>
+    </div>
+</body>
+</html>

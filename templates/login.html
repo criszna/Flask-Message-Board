@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{{ super() }}
+<!--link  or add ur additional stylesheet bootstrap here-->
+{% endblock %}
+
+{% block content %}
+<h2>Login</h2>
+<form method="post" class="auth">
+    <table>
+        <tr>
+            <td>Username :</td>
+            <td><input type="text" name="name"></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="password" name="pwd"></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Login"></td>
+        </tr>
+    </table>
+</form>
+{% endblock %}
+

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{{ super() }}
+<!--link  or add ur additional stylesheet bootstrap here-->
+{% endblock %}
+
+{% block content %}
+<script>
+    function validate(){
+        var name=document.getElementById('s_name').value;
+        var email=document.getElementById('s_email').value;
+        var pwd=document.getElementById('s_pwd').value;
+        var cpwd=document.getElementById('s_cpwd').value;
+        if(pwd!=cpwd){
+            alert("password doesnt match");
+            return false;
+        }
+        else if(email==''||name==''||pwd==''||cpwd==''){
+            alert("please enter all the fields");
+            return false;
+         }
+         else{
+            return true;
+         }
+    }
+
+</script>
+<h2>Signup</h2>
+<form method="post" class="auth" onsubmit="return validate();">
+    <table>
+        <tr>
+            <td>Username :</td>
+            <td><input type="text" name="name" id="s_name"></td>
+        </tr>
+        <tr>
+            <td>Email :</td>
+            <td><input type="text" name="email" id="s_email"></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="password" name="pwd" id="s_pwd"></td>
+        </tr>
+        <tr>
+            <td>Confirm Password:</td>
+            <td><input type="password" name="cpwd" id="s_cpwd"></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Signup"></td>
+        </tr>
+    </table>
+</form>
+{% endblock %}
+

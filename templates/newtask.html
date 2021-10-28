@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{{ super() }}
+<!--link  or add ur additional stylesheet bootstrap here-->
+{% endblock %}
+
+{% block nav %}
+<div id="navigation">
+    <ul>
+        <li><h3>Welcome {{user}}</h3></li>
+        <li><a href="{{ url_for('main.home',user=user)}}">Home</a></li>
+        <li><a href="{{ url_for('auth.logout')}}">Logout</a></li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block content %}
+<h3>Add task</h3><br>
+<form action="{{url_for('main.new_task',user=user,category=category,table=table)}}" method="POST">
+    <label>Task</label>
+    <input type="text" size="100" name="task"><br><br>
+    <label>Description</label><br><br>
+    <textarea name="desc" rows="10" cols="30"></textarea><br>
+    <input type="submit" name="save" value="save">
+</form>
+{% endblock %}

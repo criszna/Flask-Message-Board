@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{{ super() }}
+<!--link  or add ur additional stylesheet bootstrap here-->
+{% endblock %}
+
+{% block nav %}
+<div id="navigation">
+    <ul>
+        <li><h3>Welcome {{user}} </h3></li>
+        <li><a href="{{ url_for('main.home')}}">Home</a></li>
+        <li><a href="{{ url_for('main.statistics')}}">Stat</a></li>
+        <li><a href="{{ url_for('auth.logout')}}">Logout</a></li>
+    </ul>
+</div>
+{% endblock %}
+
+
+{% block content %}
+<div class="task_title">
+    <h2>{{row.title}}</h2>
+</div>
+<div class="task_date">Posted:{{row.date}}</div>
+<div class="task_desc"><p>{{row.desc}}</p></div>
+<br>
+<button class="btrow" onclick="window.history.back()">Back</button>
+<form action="{{url_for('main.edit_item',id=id,table=table)}}" method="post" class="btrow">
+    <input type="submit" value="Edit">
+</form>
+<form action="{{url_for('main.remove_item',id=id,table=table)}}" method="post" class="btrow">
+    <input type="submit" value="Delete">
+</form>
+{% if table=='todo'%}
+<form action="{{url_for('main.move_item',id=id,table=table,moveto='inprogress')}}" method="post" class="btrow">
+    <input type="submit" value="Move to inprogress">
+</form>
+<form action="{{url_for('main.move_item',id=id,table=table,moveto='done')}}" method="post" class="btrow">
+    <input type="submit" value="Move to done">
+</form>
+{% endif %}
+{% if table=='inprogress'%}
+<form action="{{url_for('main.move_item',id=id,table=table,moveto='todo')}}" method="post" class="btrow">
+    <input type="submit" value="Move to todo">
+</form>
+<form action="{{url_for('main.move_item',id=id,table=table,moveto='done')}}" method="post" class="btrow">
+    <input type="submit" value="Move to done">
+</form>
+{% endif %}
+{% if table=='done'%}
+<form action="{{url_for('main.move_item',id=id,table=table,moveto='todo')}}" method="post" class="btrow">
+    <input type="submit" value="Move to todo">
+</form>
+<form action="{{url_for('main.move_item',id=id,table=table,moveto='inprogress')}}" method="post" class="btrow">
+    <input type="submit" value="Move to inprogress">
+</form>
+{% endif %}
+{% endblock %}

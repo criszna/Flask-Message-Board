@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{{ super() }}
+<!--link  or add ur additional stylesheet bootstrap here-->
+{% endblock %}
+
+{% block content %}
+<h3>Edit task</h3><br>
+<form action="{{url_for('main.edit_item',id=id,user=user,table=table)}}" method="POST">
+    <label>Task</label>
+    <input type="text" size="100" name="task" value="{{row.title}}"><br><br>
+    <label>Description</label><br>
+    <textarea name="desc" rows="10" cols="30" >{{row.desc}}</textarea><br>
+    <input type="submit" name="save" value="save">
+</form>
+{% endblock %}

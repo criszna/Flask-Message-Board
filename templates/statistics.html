@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{{ super() }}
+<!--link  or add ur additional stylesheet bootstrap here-->
+{% endblock %}
+
+{% block nav %}
+<div id="navigation">
+    <ul>
+        <li><h3>Welcome {{user}} </h3></li>
+        <li><a href="{{ url_for('main.home')}}">Home</a></li>
+        <li><a href="{{ url_for('main.statistics')}}">Stat</a></li>
+        <li><a href="{{ url_for('auth.logout')}}">Logout</a></li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block content %}
+<table class="barchart-table">
+    <tr>
+
+    <td>
+    <div class="qt1"><p>{{tables[0]}}</p></div><br>
+    <div class="barchart">
+        <table>
+        {% for i in range(0,3) %}
+            <tr>
+                <td class="barchart-col1">{{categories[i]}}</td>
+                <td>
+                    <div class="container">
+                         <div class="skills" style="width:{{category_row[i][0]}}%;background-color:{{barcolor[i]}};">{{category_row[i][0]}}%</div>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+    </td>
+
+    <td>
+    <div class="qt1"><p>{{tables[1]}}</p></div><br>
+    <div class="barchart">
+        <table>
+        {% for i in range(0,3) %}
+            <tr>
+                <td class="barchart-col1">{{categories[i]}}</td>
+                <td>
+                    <div class="container">
+                         <div class="skills" style="width:{{category_row[i][1]}}%;background-color:{{barcolor[i]}};">{{category_row[i][1]}}%</div>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+    </td>
+
+    <td>
+    <div class="qt1"><p>{{tables[2]}}</p></div><br>
+    <div class="barchart">
+        <table>
+        {% for i in range(0,3) %}
+            <tr>
+                <td class="barchart-col1">{{categories[i]}}</td>
+                <td>
+                    <div class="container">
+                         <div class="skills" style="width:{{category_row[i][2]}}%;background-color:{{barcolor[i]}};">{{category_row[i][2]}}%</div>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+    </td>
+
+    </tr>
+    </table>
+{% endblock %}
+
